@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gettingd
+  labels:
+    role: getting
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      role: getting
+      tier: web
+  template:
+    metadata:
+      labels:
+        role: getting
+        tier: web
+    spec:
+      containers:
+      - name: getting-app
+        image: oayras/getting-started:1.0-krowdy	
+        ports:
+        - containerPort: 3000
